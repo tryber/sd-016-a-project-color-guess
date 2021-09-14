@@ -12,3 +12,9 @@ for(let i = 0; i < 3; i += 1){
 
 const text = document.getElementById('rgb-color');
 text.innerText = `(${array[0]}, ${array[1]}, ${array[2]})`;
+
+const colors = document.getElementById('colors');
+for(let i = 0; i < 6; i += 1){
+    colors.appendChild(document.createElement('div')).classList.add('ball');
+    colors.children[i].id = i;
+}

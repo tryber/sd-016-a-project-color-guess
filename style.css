@@ -2,5 +2,24 @@
     text-align: center;
     font-size: 40px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
 
+h1{
+    text-align: center;
+    font-size: 50px;
+}
+
+#colors{    
+    width: 60%;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.ball{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin: 9px;
+    display: inline-block;
 }
