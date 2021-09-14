@@ -28,27 +28,43 @@ for (let i = 0; i < 6; i += 1) {
 let colorsArray = [];
 let randomColor = [];
 
-for (let i = 0; i < 6; i += 1) {
-    randomColor = generateColor(randomColor);
-    colorsArray.push(randomColor);
-    randomColor = [];
+function generateSixColors() {
+
+    for (let i = 0; i < 6; i += 1) {
+        randomColor = generateColor(randomColor);
+        colorsArray.push(randomColor);
+        randomColor = [];
+    }
+
+    return colorsArray;
+
 }
 
-let index = getRandomInt(0, 6);
+colorsArray = generateSixColors();
 
-text.innerText = `(${colorsArray[index][0]}, ${colorsArray[index][1]}, ${colorsArray[index][2]})`;
+function elementRGB() {
 
+    let index = getRandomInt(0, 6);
+
+    text.innerText = `(${colorsArray[index][0]}, ${colorsArray[index][1]}, ${colorsArray[index][2]})`;
+
+    let array = [text.innerText, index];
+
+    return array;
+}
+
+let elementRGBarray = elementRGB();
 // add color to circules
 
-const circules = document.getElementsByClassName('ball');
+const circules = document.querySelectorAll('.ball');
 
-function generateNewColors() {
+function generateNewColors(array) {
     for (let i = 0; i < 6; i += 1) {
-        circules[i].style.backgroundColor = `rgb(${colorsArray[i][0]}, ${colorsArray[i][1]}, ${colorsArray[i][2]})`;
+        array[i].style.backgroundColor = `rgb(${colorsArray[i][0]}, ${colorsArray[i][1]}, ${colorsArray[i][2]})`;
     }
 }
 
-generateNewColors();
+generateNewColors(circules);
 
 // play 
 
@@ -56,10 +72,22 @@ const gameStatus = document.getElementById('answer');
 
 for (let i = 0; i < 6; i += 1) {
     circules[i].addEventListener('click', () => {
-        if (i === index) {
+        if (i === elementRGBarray[1]) {
             gameStatus.innerText = 'Acertou!';
         } else {
             gameStatus.innerText = 'Errou! Tente novamente!';
         }
     })
 }
+
+const resetButton = document.getElementById('reset-game');
+
+function resetEverything() {
+    elementRGBarray = elementRGB();
+    colorsArray = [];
+    colorsArray = generateSixColors();
+    generateNewColors(circules);
+    gameStatus.innerText = 'Escolha uma cor';
+}
+
+resetButton.addEventListener('click', resetEverything);
