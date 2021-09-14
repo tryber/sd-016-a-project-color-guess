@@ -2,19 +2,48 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
-  }  // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+}  // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
 let array = [];
 
-for(let i = 0; i < 3; i += 1){
-    array.push(getRandomInt(0, 255));
+function generateColor(array) {
+    let colorArray = array.slice();
+    for (let i = 0; i < 3; i += 1) {
+        colorArray.push(getRandomInt(0, 255));
+    }
+    return colorArray;
 }
 
+generateColor(array);
+
 const text = document.getElementById('rgb-color');
-text.innerText = `(${array[0]}, ${array[1]}, ${array[2]})`;
 
 const colors = document.getElementById('colors');
-for(let i = 0; i < 6; i += 1){
+for (let i = 0; i < 6; i += 1) {
     colors.appendChild(document.createElement('div')).classList.add('ball');
     colors.children[i].id = i;
 }
+
+// generate 6 colors
+
+let colorsArray = [];
+let randomColor = [];
+
+for (let i = 0; i < 6; i += 1) {
+    randomColor = generateColor(randomColor);
+    colorsArray.push(randomColor);
+    randomColor = [];
+}
+
+let index = getRandomInt(0, 6);
+
+text.innerText = `(${colorsArray[index][0]}, ${colorsArray[index][1]}, ${colorsArray[index][2]})`;
+
+// add color to circules
+
+const circules = document.getElementsByClassName('ball');
+
+for(let i = 0; i < 6; i += 1){
+    circules[i].style.backgroundColor = `rgb(${colorsArray[i][0]}, ${colorsArray[i][1]}, ${colorsArray[i][2]})`;
+}
+
