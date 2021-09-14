@@ -19,6 +19,7 @@ generateColor(array);
 const text = document.getElementById('rgb-color');
 
 const colors = document.getElementById('colors');
+
 for (let i = 0; i < 6; i += 1) {
     colors.appendChild(document.createElement('div')).classList.add('ball');
 }
@@ -42,16 +43,7 @@ function generateSixColors() {
 
 colorsArray = generateSixColors();
 
-function elementRGB() {
 
-    let index = getRandomInt(0, 6);
-
-    text.innerText = `(${colorsArray[index][0]}, ${colorsArray[index][1]}, ${colorsArray[index][2]})`;
-
-    let array = [text.innerText, index];
-
-    return array;
-}
 
 let elementRGBarray = elementRGB();
 // add color to circules
@@ -66,28 +58,59 @@ function generateNewColors(array) {
 
 generateNewColors(circules);
 
+const gameStatus = document.getElementById('answer');   
+const resetButton = document.getElementById('reset-game');
+
+
+
 // play 
 
-const gameStatus = document.getElementById('answer');
+let score = document.getElementById('score');
+let scoreNumber;
 
 for (let i = 0; i < 6; i += 1) {
     circules[i].addEventListener('click', () => {
         if (i === elementRGBarray[1]) {
             gameStatus.innerText = 'Acertou!';
+            scoreNumber = parseInt(score.innerText);
+            scoreNumber += 3;
+            let string = scoreNumber.toString();
+            score.innerText = string;
+            resetEverything('0');
         } else {
+            resetEverything('1');
             gameStatus.innerText = 'Errou! Tente novamente!';
+            
         }
     })
 }
 
-const resetButton = document.getElementById('reset-game');
-
-function resetEverything() {
-    elementRGBarray = elementRGB();
-    colorsArray = [];
-    colorsArray = generateSixColors();
-    generateNewColors(circules);
-    gameStatus.innerText = 'Escolha uma cor';
-}
 
 resetButton.addEventListener('click', resetEverything);
+resetButton.addEventListener('click', () => {
+    gameStatus.innerText = 'Escolha uma cor';
+})
+
+function resetEverything(string) {
+    
+    
+    colorsArray = [];
+    colorsArray = generateSixColors();
+    elementRGBarray = elementRGB();
+    generateNewColors(circules);
+    if(string === '1'){
+        gameStatus.innerText = 'Acertou!';
+    }
+}
+
+function elementRGB() {
+
+    let index = getRandomInt(0, 6);
+
+    text.innerText = `(${colorsArray[index][0]}, ${colorsArray[index][1]}, ${colorsArray[index][2]})`;
+
+    let array = [text.innerText, index];
+
+    return array;
+}
+

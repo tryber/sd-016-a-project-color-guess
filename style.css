@@ -37,3 +37,8 @@ h1{
     text-align: center;
     margin: 10px;
 }
+
+#score{
+    text-align: center;
+    font-size: 40px;
+}
