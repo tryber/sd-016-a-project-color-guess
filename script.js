@@ -4,6 +4,9 @@ const rgbColor = document.querySelector('#rgb-color');
 // Localiza lista das opções de cores
 const colorOptions = document.querySelector('#color-options');
 
+// Localiza string de respota
+const answerString = document.querySelector('#answer');
+
 // Funções:
 // Gera um código RGB aleatório para inserir em rgbColor
 function generateRgb() {
@@ -17,12 +20,30 @@ function generateRgb() {
     return colorString;
 }
 
-// Colore as opções com cores aleatórias
-function colorizeOptions() {
-    for (let index = 0; index < colorOptions.children.length; index += 1) {
-        colorOptions.children[index].style.backgroundColor = `rgb${generateRgb()}`;
+// Verificar se é a resposta correta
+function checkIfCorrect(event) {
+    const answer = `rgb${rgbColor.innerHTML}`;
+    if (event.target.style.backgroundColor === answer) {
+        answerString.innerHTML = 'Acertou!';
+    } else {
+        answerString.innerHTML = 'Errou! Tente novamente!';
     }
 }
+
+// Colore as opções com cores aleatórias
+function colorizeOptions() {
+    const randomIndex = Math.floor(Math.random() *5 );
+    console.log(randomIndex);
+    for (let index = 0; index < colorOptions.children.length; index += 1) {
+        if (index === randomIndex) {
+            colorOptions.children[index].style.backgroundColor = `rgb${rgbColor.innerHTML}`;
+        } else {
+            colorOptions.children[index].style.backgroundColor = `rgb${generateRgb()}`;
+        }
+        colorOptions.children[index].addEventListener('click', checkIfCorrect);
+    }
+}
+
 
 // Carregamento da página
 window.onload = function onLoad() {
