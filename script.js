@@ -1,6 +1,7 @@
 const balls = document.querySelectorAll('.ball');
 const colorToGuess = document.querySelector('#rgb-color');
 const answerText = document.querySelector('#answer');
+const buttonResetGame = document.querySelector('#reset-game');
 
 function returnRandomRGBColor() {
   const r = Math.floor(Math.random() * 255) + 1;
@@ -9,7 +10,7 @@ function returnRandomRGBColor() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-function addCorToBalls() {
+function addingColorToBalls() {
   balls.forEach((ball) => {
     ball.style.backgroundColor = returnRandomRGBColor();
   });
@@ -31,14 +32,20 @@ function testBackgroundColor(event) {
 
 function addingEventListenerToBalls() {
   balls.forEach((ball) => {
-    ball.addEventListener('click', testBackgroundColor)
+    ball.addEventListener('click', testBackgroundColor);
   });
 }
 
+function addingAsnwerText() {
+  answerText.innerText = 'Escolha uma cor';
+}
+
 function setupGame() {
-  addCorToBalls();
+  addingColorToBalls();
   pickingRandomColorToGuess();
   addingEventListenerToBalls();
+  addingAsnwerText();
 }
 
 window.onload = setupGame;
+buttonResetGame.addEventListener('click', setupGame);
