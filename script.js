@@ -21,7 +21,6 @@ const text = document.getElementById('rgb-color');
 const colors = document.getElementById('colors');
 for (let i = 0; i < 6; i += 1) {
     colors.appendChild(document.createElement('div')).classList.add('ball');
-    colors.children[i].id = i;
 }
 
 // generate 6 colors
@@ -45,5 +44,17 @@ const circules = document.getElementsByClassName('ball');
 
 for(let i = 0; i < 6; i += 1){
     circules[i].style.backgroundColor = `rgb(${colorsArray[i][0]}, ${colorsArray[i][1]}, ${colorsArray[i][2]})`;
+    if(i === index){
+        circules[i].id = 'answer';
+    }
 }
 
+// play 
+
+for(let i = 0; i < 6; i += 1){
+    circules[i].addEventListener('click', () => {
+        if(i === index){
+            console.log('genio!');
+        }
+    })
+}
