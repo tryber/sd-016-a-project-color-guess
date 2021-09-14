@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColorGuess</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="title">
+            Color Guesser
+        </h1>
+        <p id="rgb-color" class="hover">
+            (1,1,1)
+        </p>
+        <p id="answer">
+            Escolha uma cor
+        </p>
+    </header>
+    <main>
+        <ul class="lista">
+            
+        </ul>
+    </main>
+    <footer>
+        <button id="reset-game" class="hover" onclick=Reset()>
+            <p>
+                Resetar jogo
+            </p>
+        </button>
+        <section>
+            <p>Placar : </p><p id="score">0</p>
+        </section>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
