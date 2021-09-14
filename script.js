@@ -42,19 +42,24 @@ text.innerText = `(${colorsArray[index][0]}, ${colorsArray[index][1]}, ${colorsA
 
 const circules = document.getElementsByClassName('ball');
 
-for(let i = 0; i < 6; i += 1){
-    circules[i].style.backgroundColor = `rgb(${colorsArray[i][0]}, ${colorsArray[i][1]}, ${colorsArray[i][2]})`;
-    if(i === index){
-        circules[i].id = 'answer';
+function generateNewColors() {
+    for (let i = 0; i < 6; i += 1) {
+        circules[i].style.backgroundColor = `rgb(${colorsArray[i][0]}, ${colorsArray[i][1]}, ${colorsArray[i][2]})`;
     }
 }
 
+generateNewColors();
+
 // play 
 
-for(let i = 0; i < 6; i += 1){
+const gameStatus = document.getElementById('answer');
+
+for (let i = 0; i < 6; i += 1) {
     circules[i].addEventListener('click', () => {
-        if(i === index){
-            console.log('genio!');
+        if (i === index) {
+            gameStatus.innerText = 'Acertou!';
+        } else {
+            gameStatus.innerText = 'Errou! Tente novamente!';
         }
     })
 }

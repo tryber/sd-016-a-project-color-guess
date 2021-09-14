@@ -13,6 +13,8 @@ h1{
     width: 60%;
     height: 200px;
     margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .ball{
@@ -22,4 +24,16 @@ h1{
     height: 90px;
     margin: 9px;
     display: inline-block;
+}
+
+#statusContainer {
+    border: 1px solid black;
+    text-align: center;
+    width: 100%;
+    height: 35px;
+}
+
+#answer{
+    text-align: center;
+    margin: 10px;
 }
