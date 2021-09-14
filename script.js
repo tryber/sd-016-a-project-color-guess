@@ -14,12 +14,13 @@ function returnRandomRGBColor() {
 
 function addingColorToBalls() {
   balls.forEach((ball) => {
-    ball.style.backgroundColor = returnRandomRGBColor();
+    const currentBall = ball;
+    currentBall.style.backgroundColor = returnRandomRGBColor();
   });
 }
 
 function pickingRandomColorToGuess() {
-  choosenColor = Math.floor(Math.random() * balls.length);
+  const choosenColor = Math.floor(Math.random() * balls.length);
   colorToGuess.innerText = balls[choosenColor].style.backgroundColor;
 }
 
