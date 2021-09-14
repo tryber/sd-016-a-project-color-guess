@@ -1,0 +1,12 @@
+#colors {
+  display: flex;
+}
+
+#score {
+  display: flex;
+}
+
+.ball {
+  width: 100px;
+  height: 100px;
+}
