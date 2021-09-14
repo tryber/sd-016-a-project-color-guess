@@ -30,24 +30,35 @@ function removeListenerOfBalls() {
   });
 }
 
-function winGame() {
+function winGame(target) {
   playerScore += 3;
   currentScore.innerText = playerScore;
   answerText.innerText = 'Acertou!';
+  target.classList.add('correct');
   removeListenerOfBalls();
 }
 
-function loseGame() {
+function paintCorrectBall () {
+  balls.forEach((ball) => {
+    if (colorToGuess.innerText === ball.style.backgroundColor) {
+      ball.classList.add('correct');
+    }
+  });
+}
+
+function loseGame(target) {
   answerText.innerText = 'Errou! Tente novamente!';
+  target.classList.add('incorrect');
+  paintCorrectBall();
   removeListenerOfBalls();
 }
 
 function testBackgroundColor(event) {
   const currentBall = event.target;
   if (colorToGuess.innerText === currentBall.style.backgroundColor) {
-    winGame();
+    winGame(currentBall);
   } else {
-    loseGame();
+    loseGame(currentBall);
   }
 }
 
@@ -61,8 +72,16 @@ function addingAsnwerText() {
   answerText.innerText = 'Escolha uma cor';
 }
 
+function takingOffClassOfBalls() {
+  balls.forEach((ball) => {
+    const currentBall = ball;
+    currentBall.classList = 'ball';
+  });
+}
+
 function setupGame() {
   addingColorToBalls();
+  takingOffClassOfBalls();
   pickingRandomColorToGuess();
   addingEventListenerToBalls();
   addingAsnwerText();
