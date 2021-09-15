@@ -65,6 +65,8 @@ function buttonFinish () {
 }
 
 function restartGame () {
+  let feedbackText = document.querySelector('#answer');
+  feedbackText.innerHTML = "Escolha uma cor"
   colorChoices ();
   chooseChallenge ();
 };
