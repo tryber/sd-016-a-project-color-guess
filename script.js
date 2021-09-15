@@ -60,7 +60,7 @@ function scoreCount (event) {
 };
 
 function buttonFinish () {
-  let button = document.querySelector('#finish');
+  let button = document.querySelector('#reset-game');
   button.addEventListener('click', restartGame);
 }
 
