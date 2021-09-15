@@ -1,0 +1,55 @@
+.ball {
+  border-radius: 50%;
+  width: 100px;
+  padding: 10px;
+  margin: 20px;
+  height: 100px;
+  display: inline-block;
+
+  /* Box shadows from --> https://www.w3schools.com/css/css3_shadows_box.asp */
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+body {
+  margin: 6% 16%;
+  padding-top: 5%;
+  padding-bottom: 10%;
+
+  /* Box shadows from --> https://www.w3schools.com/css/css3_shadows_box.asp */
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+#title {
+  font-size: xxx-large;
+}
+
+#rgb-color {
+
+  /* Box shadows from --> https://www.w3schools.com/css/css3_shadows_box.asp */
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: x-large;
+  margin: auto;
+  border-radius: 20px;
+  background-color: crimson;
+  width: 15%;
+  padding: 30px 0;
+}
+
+.hover:hover {
+  transition: 180ms;
+  transform: scale(150%);
+}
+
+#reset-game {
+
+  /* Box shadows from --> https://www.w3schools.com/css/css3_shadows_box.asp */
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: large;
+  border: 0;
+  margin: auto;
+  border-radius: 20px;
+  background-color: crimson;
+  width: 15%;
+  padding: 0;
+}
