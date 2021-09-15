@@ -1,6 +1,7 @@
 window.onload = function () {
   colorChoices ();
   chooseChallenge ();
+  buttonFinish();
 };
 
 function generateRandomHue () {
@@ -56,4 +57,14 @@ function scoreCount (event) {
     colorChoices ();
     chooseChallenge ();
   };  
+};
+
+function buttonFinish () {
+  let button = document.querySelector('#finish');
+  button.addEventListener('click', restartGame);
+}
+
+function restartGame () {
+  colorChoices ();
+  chooseChallenge ();
 };

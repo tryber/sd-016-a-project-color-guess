@@ -1,13 +1,16 @@
 #title, #rgb-color, #placar, #lista-opções, #answer{
   margin: 20px;
   text-align: center;
+
 }
 section p {
   display: inline-block;
   margin-top: 0;
+
 }
 #placar{
   margin: 0;
+
 }
 
 .ball {
@@ -16,7 +19,13 @@ section p {
   border-radius: 50%;
   display: inline-block;
   height: 40px;
-  margin: 0 auto;
+  margin: 0 auto 25px 0;
   width: 40px;
 
 };
+
+#finish{
+  display: block;
+  margin-top: 15px;
+  align-self: center;
+}
