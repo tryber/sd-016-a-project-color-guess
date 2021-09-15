@@ -11,3 +11,21 @@ function inputRgb() {
 }
 
 inputRgb();
+
+function createSpans() {
+  for (let index = 1; index <= 6; index += 1) {
+    const createSection = document.createElement('span');
+    createSection.classList.add('ball');
+    createSection.style.padding = '20px';
+    createSection.style.borderRadius = '50%';
+    createSection.style.height = '1px';
+    createSection.style.border = '1px solid black';
+    createSection.style.width = '1px';
+    createSection.style.marginLeft = '10px';
+    createSection.style.marginTop = '100px';
+    createSection.style.display = 'inline-block';
+    getIdRgb.appendChild(createSection);
+  }
+}
+
+createSpans();
