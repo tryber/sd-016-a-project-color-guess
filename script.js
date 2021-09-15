@@ -1,6 +1,7 @@
 const rgbColor = document.querySelector('#rgb-color');
 const rgbAnswerSection = document.querySelector('#rgb-answers');
 const answerText = document.querySelector('#answer');
+const restartBttn = document.querySelector('#reset-game');
 
 function randomRGB() {
   const r = Math.ceil(Math.random() * 256);
@@ -44,14 +45,21 @@ function insertBackgroundColor() {
 }
 insertBackgroundColor();
 
-function clickEvent() {
-  const asdadas = document.querySelector('#rgb-answers');
-  asdadas.addEventListener('click', (content) => {
-    const answerUser = content.target;
-    if (answerUser.style.backgroundColor === rgbColor.innerText) {
+const answerUser = document.querySelector('#rgb-answers');
+
+answerUser.addEventListener('click', (content) => {
+  const answerContent = content.target;
+  if (answerContent.className === 'ball') {
+    if (answerContent.style.backgroundColor === rgbColor.innerText) {
       answerText.innerText = 'Acertou!';
     } else {
       answerText.innerText = 'Errou! Tente novamente!';
     }
-  });
-} clickEvent();
+  }
+});
+
+restartBttn.addEventListener('click', () => {
+  rgbReference();
+  insertBackgroundColor();
+  answerText.innerText = 'Escolha uma cor';
+});
