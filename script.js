@@ -2,6 +2,7 @@ const rgbColor = document.querySelector('#rgb-color');
 const rgbAnswerSection = document.querySelector('#rgb-answers');
 const answerText = document.querySelector('#answer');
 const restartBttn = document.querySelector('#reset-game');
+const scoreField = document.querySelector('#score');
 
 function randomRGB() {
   const r = Math.ceil(Math.random() * 256);
@@ -47,19 +48,26 @@ insertBackgroundColor();
 
 const answerUser = document.querySelector('#rgb-answers');
 
-answerUser.addEventListener('click', (content) => {
-  const answerContent = content.target;
-  if (answerContent.className === 'ball') {
-    if (answerContent.style.backgroundColor === rgbColor.innerText) {
-      answerText.innerText = 'Acertou!';
-    } else {
-      answerText.innerText = 'Errou! Tente novamente!';
+function answerUserClick() {
+  answerUser.addEventListener('click', function userClick(content) {
+    const answerContent = content.target;
+    if (answerContent.className === 'ball') {
+      if (answerContent.style.backgroundColor === rgbColor.innerText) {
+        answerText.innerText = 'Acertou!';
+        const score = parseInt(scoreField.innerText, 10) + 3;
+        scoreField.innerText = score;
+      } else {
+        answerText.innerText = 'Errou! Tente novamente!';
+      }
     }
-  }
-});
+    answerUser.removeEventListener('click', userClick);
+  });
+}
+answerUserClick();
 
 restartBttn.addEventListener('click', () => {
   rgbReference();
   insertBackgroundColor();
+  answerUserClick();
   answerText.innerText = 'Escolha uma cor';
 });
