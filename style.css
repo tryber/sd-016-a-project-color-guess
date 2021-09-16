@@ -2,3 +2,19 @@ body {
     margin: 0;
     padding: 0;
 }
+
+
+
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ball {
+    border: 1px solid black;
+    border-radius: 100%;
+    padding: 50px;
+    margin: 10px;
+}
+
