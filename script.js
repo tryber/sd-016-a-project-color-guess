@@ -10,3 +10,15 @@ function randomColor() {
 // Buscando o elemento que vai receber o RGB color
 const tagRgb = document.querySelector('#rgb-color');
 tagRgb.innerHTML = randomColor();
+
+// Buscando o elemento que vai armazenar a bolinhas de cores
+const ball = Array.from(document.getElementsByClassName('ball'));
+const positionRandom = Math.floor(Math.random() * (6 - 0) + 0);
+ball[positionRandom].style.background = `rgb${tagRgb.innerHTML}`;
+
+for (let index = 0; index < ball.length; index += 1) {
+  const currentColor = randomColor();
+  if (ball[index].style.background === '' && ball[index].style.background !== positionRandom) {
+    ball[index].style.background = `rgb${currentColor}`;
+  }
+}
