@@ -58,3 +58,5 @@ button.addEventListener('click', () => {
 window.onload = () => {
   score.innerText = 0;
 };
+
+// completed
