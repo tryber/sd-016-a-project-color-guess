@@ -16,16 +16,19 @@ function arrayColor() {
   return arrayColors;
 }
 
-const generatorColor = arrayColor();
-console.log(generatorColor);
+function generatorColor() {
+  return arrayColor();
+}
 
-function createGamecolor() {
-  const randon = Math.floor(Math.random() * generatorColor.length);
-  console.log(randon);
+const generatorColors = generatorColor();
+
+function createGamecolor(color) {
+  const randon = Math.floor(Math.random() * color.length);
   const createColor = document.createElement('p');
   createColor.id = 'rgb-color';
-  createColor.innerHTML = generatorColor[randon];
+  createColor.innerHTML = color[randon];
   container.appendChild(createColor);
+  return color;
 }
 
 function createOptionColors() {
@@ -33,9 +36,15 @@ function createOptionColors() {
     // let sort = Math.floor(Math.random() * 6)
     const createDivColors = document.createElement('div');
     createDivColors.classList.add('ball');
-    const rgb = `rgb${generatorColor[index]}`;
-    createDivColors.style.backgroundColor = rgb;
     container.appendChild(createDivColors);
+  }
+}
+
+function inputColor(color) {
+  const divColors = document.querySelectorAll('.ball');
+  for (let index = 0; index < 6; index += 1) {
+    const rgb = `rgb${color[index]}`;
+    divColors[index].style.backgroundColor = rgb;
   }
 }
 
@@ -61,8 +70,29 @@ function validationColor() {
     });
   }
 }
+function createButton() {
+  const createButtonReset = document.createElement('button');
+  createButtonReset.innerHTML = 'Resetar Jogo';
+  createButtonReset.id = 'reset-game';
+  createButtonReset.type = 'submit';
+  container.appendChild(createButtonReset);
+}
 
-createGamecolor();
+createGamecolor(generatorColors);
 createOptionColors();
+inputColor(generatorColors);
 createAnswer();
 validationColor();
+createButton();
+
+const selectButton = document.querySelector('#reset-game');
+selectButton.addEventListener('click', () => {
+  const selectColor = document.querySelector('#rgb-color');
+  const selectAnswer = document.querySelector('#answer');
+  const gerador = generatorColor();
+  const randon = Math.floor(Math.random() * gerador.length);
+  inputColor(gerador);
+  selectColor.innerHTML = gerador[randon];
+  selectAnswer.innerHTML = 'Escolha uma cor';
+  validationColor();
+});
