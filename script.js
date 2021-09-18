@@ -1,9 +1,8 @@
 const getIdRgb = document.querySelector('#rgb-color');
-
-const getSection = document.getElementsByTagName('section')[0];
-const childIdRgb = document.createElement('p');
-childIdRgb.classList.add('showColors');
-getSection.appendChild(childIdRgb);
+const getButtonReset = document.getElementsByTagName('button')[0];
+const childIdRgb = document.querySelector('.showColors');
+const getClassColor = document.querySelector('.showColors');
+const creatingPTask = document.createElement('p');
 
 function creatingRgbColor() {
   const choose = Math.floor(Math.random() * 255);
@@ -32,19 +31,17 @@ function createColors() {
 }
 
 function creatingTaskGame() {
-  const getClassColor = document.querySelector('.showColors');
-  const creatingPTask = document.createElement('p');
   creatingPTask.id = 'answer';
   creatingPTask.innerText = 'Escolha uma cor';
   getClassColor.appendChild(creatingPTask);
 }
 
 function creatingGame() {
-  const getClassBallColors = document.querySelectorAll('.ball');
+  const getClassColors = document.querySelectorAll('.ball');
   const getPTask = document.querySelector('#answer');
-  for (let index = 0; index < getClassBallColors.length; index += 1) {
-    getClassBallColors[index].addEventListener('click', () => {
-      if (getClassBallColors[index].style.backgroundColor === getIdRgb.innerText.replace('', 'rgb')) {
+  for (let index = 0; index < getClassColors.length; index += 1) {
+    getClassColors[index].addEventListener('click', () => {
+      if (getClassColors[index].style.backgroundColor === getIdRgb.innerHTML.replace('', 'rgb')) {
         getPTask.innerText = 'Acertou!';
       } else {
         getPTask.innerText = 'Errou! Tente novamente!';
@@ -72,3 +69,9 @@ function createSpans() {
   creatingGame();
 }
 createSpans();
+
+getButtonReset.addEventListener('click', () => {
+  createColors();
+  creatingTaskGame();
+  creatingGame();
+});
