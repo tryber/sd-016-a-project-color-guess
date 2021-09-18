@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Project Color Guess</title>
+  </head>
+  <body>
+    <header class="container d-flex justify-content-center">
+      <h1 id="title" class="display-1">Adivinhe a cor!</h1>
+    </header>
+    <main
+      id="main-container"
+      class="
+        container
+        d-flex
+        justify-content-center
+        flex-column
+        align-items-center
+        rounded-3
+        border border-5
+      "
+    >
+      <div>
+        <h2 id="rgb-color"></h2>
+        <h3 id="score">0</h3>
+      </div>
+      <section id="colors-ball">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+      </section>
+      <section id="result-answer">
+        <h3 id="answer" class="lead">Escolha uma cor</h3>
+      </section>
+      <div>
+        <button id="reset-game" class="btn btn-info">Resetar jogo/cores</button>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
