@@ -52,6 +52,7 @@ button.addEventListener('click', () => {
   createRandom();
   const recoverData = localStorage.getItem('counter');
   phraseReturn.innerText = 'Escolha uma cor';
+  phraseReturn.style.color = 'black';
   return recoverData;
 });
 
