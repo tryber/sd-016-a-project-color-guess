@@ -7,6 +7,8 @@ h1 {
 }
 
 .container {
+  padding: 20px;
+  text-align: center;
   border: 3px solid black;
   height: 400px;
   border-radius: 20px;
@@ -15,4 +17,13 @@ h1 {
 .container p {
   text-align: center;
   font-size: 20pt;
+}
+
+.ball {
+  margin: 10px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 50%;
 }
