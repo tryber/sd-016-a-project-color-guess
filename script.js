@@ -3,7 +3,8 @@ const getButtonReset = document.getElementsByTagName('button')[0];
 const childIdRgb = document.querySelector('.showColors');
 const getClassColor = document.querySelector('.showColors');
 const creatingPTask = document.createElement('p');
-
+const getScore = document.querySelector('#score');
+let count = 0;
 function creatingRgbColor() {
   const choose = Math.floor(Math.random() * 255);
   const choose1 = Math.floor(Math.random() * 255);
@@ -40,9 +41,13 @@ function creatingGame() {
   const getClassColors = document.querySelectorAll('.ball');
   const getPTask = document.querySelector('#answer');
   for (let index = 0; index < getClassColors.length; index += 1) {
+    let cont = count;
     getClassColors[index].addEventListener('click', () => {
       if (getClassColors[index].style.backgroundColor === getIdRgb.innerHTML.replace('', 'rgb')) {
         getPTask.innerText = 'Acertou!';
+        cont += 3;
+        count = cont;
+        getScore.innerText = `Placar = ${count}`;
       } else {
         getPTask.innerText = 'Errou! Tente novamente!';
       }
