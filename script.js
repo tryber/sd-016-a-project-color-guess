@@ -2,6 +2,7 @@ const getIdRgb = document.querySelector('#rgb-color');
 
 const getSection = document.getElementsByTagName('section')[0];
 const childIdRgb = document.createElement('p');
+childIdRgb.classList.add('showColors');
 getSection.appendChild(childIdRgb);
 
 function creatingRgbColor() {
@@ -15,10 +16,12 @@ function creatingRgbColor() {
 }
 
 function getInputRgbAndDisplayInMyPage() {
-  const rgbNumber = creatingRgbColor();
-  getIdRgb.innerText = rgbNumber.replace('rgb', '');
+  const getBall = document.querySelectorAll('.ball');
+  const chooseColorByRgb = getBall[Math.floor(Math.random() * 6)].style.backgroundColor;
+  // Método replace: https://www.devmedia.com.br/javascript-replace-substituindo-valores-em-uma-string/39176
+  // Pega a string 'rgb' e a substitui pela string vazia.
+  getIdRgb.innerText = chooseColorByRgb.replace('rgb', '');
 }
-getInputRgbAndDisplayInMyPage();
 
 function createColors() {
   const getBall = document.querySelectorAll('.ball');
@@ -26,6 +29,28 @@ function createColors() {
     getBall[index].style.backgroundColor = creatingRgbColor();
   }
   getInputRgbAndDisplayInMyPage();
+}
+
+function creatingTaskGame() {
+  const getClassColor = document.querySelector('.showColors');
+  const creatingPTask = document.createElement('p');
+  creatingPTask.id = 'answer';
+  creatingPTask.innerText = 'Escolha uma cor';
+  getClassColor.appendChild(creatingPTask);
+}
+
+function creatingGame() {
+  const getClassBallColors = document.querySelectorAll('.ball');
+  const getPTask = document.querySelector('#answer');
+  for (let index = 0; index < getClassBallColors.length; index += 1) {
+    getClassBallColors[index].addEventListener('click', () => {
+      if (getClassBallColors[index].style.backgroundColor === getIdRgb.innerText.replace('', 'rgb')) {
+        getPTask.innerText = 'Acertou!';
+      } else {
+        getPTask.innerText = 'Errou! Tente novamente!';
+      }
+    });
+  }
 }
 
 function createSpans() {
@@ -43,5 +68,7 @@ function createSpans() {
     childIdRgb.appendChild(createSpan);
   }
   createColors();
+  creatingTaskGame();
+  creatingGame();
 }
 createSpans();
