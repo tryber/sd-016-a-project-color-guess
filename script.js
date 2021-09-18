@@ -12,3 +12,14 @@ function setRGBCode() {
 }
 
 setRGBCode();
+
+function setColorPaletteBall() {
+  const paletteBall = document.querySelectorAll('.ball');
+
+  for (let index = 0; index < paletteBall.length; index += 1) {
+    const colorBG = generateRGBCode();
+    paletteBall[index].style.backgroundColor = `rgb${colorBG}`;
+  }
+}
+
+setColorPaletteBall();
