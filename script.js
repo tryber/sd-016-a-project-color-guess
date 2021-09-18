@@ -41,24 +41,40 @@ function setColorPaletteBall(array) {
 }
 setColorPaletteBall(generateRGBColor);
 
-function guessColor() {
+// let count = 0;
+
+// function checkCorrectness(param) {
+//   const codeColor = getElementCodeColor();
+//   const score = document.querySelector('#score');
+//   const answer = document.querySelector('#answer');
+
+//   if (codeColor.innerHTML === param.split('rgb')[1]) {
+//     count += 3;
+//     answer.innerHTML = 'Acertou!';
+//     score.innerHTML = count;
+//   }
+//   if (codeColor.innerHTML !== param.split('rgb')[1]) {
+//     answer.innerHTML = 'Errou! Tente novamente!';
+//   }
+// }
+
+let count = 0;
+function guessColor(event) {
   const codeColor = getElementCodeColor();
-  const colorsBall = document.querySelectorAll('.ball');
+  const score = document.querySelector('#score');
   const answer = document.querySelector('#answer');
-
-  for (let index = 0; index < colorsBall.length; index += 1) {
-    colorsBall[index].addEventListener('click', (event) => {
-      const color = event.target.style.backgroundColor;
-
-      if (codeColor.innerHTML === color.split('rgb')[1]) {
-        answer.innerHTML = 'Acertou!';
-      } else {
-        answer.innerHTML = 'Errou! Tente novamente!';
-      }
-    });
+  const color = event.target.style.backgroundColor;
+  if (codeColor.innerHTML === color.split('rgb')[1]) {
+    count += 3;
+    answer.innerHTML = 'Acertou!';
+    score.innerHTML = count;
+  } else {
+    answer.innerHTML = 'Errou! Tente novamente!';
   }
 }
-guessColor();
+
+const containerBalls = document.querySelector('#colors-ball');
+containerBalls.addEventListener('click', guessColor);
 
 const btnResetGameColor = document.querySelector('#reset-game');
 btnResetGameColor.addEventListener('click', () => {
@@ -67,5 +83,4 @@ btnResetGameColor.addEventListener('click', () => {
   answer.innerHTML = 'Escolha uma cor';
   setRGBCode(rgbGenerate);
   setColorPaletteBall(rgbGenerate);
-  guessColor();
 });

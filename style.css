@@ -1,3 +1,6 @@
+body {
+  background-color: #f8f9fa;
+}
 #colors-ball {
   display: flex;
   margin: 20px 0;
@@ -8,4 +11,21 @@
   height: 80px;
   border-radius: 50%;
   margin-left: 3px;
+}
+header {
+  margin-top: 40px;
+}
+h2 {
+  text-align: center;
+}
+h3 {
+  width: 300px;
+  text-align: center;
+  margin: 40px;
+}
+
+#main-container {
+  margin-top: 40px;
+  padding: 20px;
+  width: 700px;
 }
