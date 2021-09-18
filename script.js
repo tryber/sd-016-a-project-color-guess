@@ -22,23 +22,24 @@ function getElementCodeColor() {
   return setCodeColor;
 }
 
-function setRGBCode() {
+function setRGBCode(array) {
   const setCodeColor = document.querySelector('#rgb-color');
-  const colorArray = generateRGBColor;
+  const colorArray = array;
   const randomColor = Math.floor(Math.random() * colorArray.length);
-  console.log(randomColor);
   setCodeColor.innerHTML = colorArray[randomColor];
 }
 
-setRGBCode();
+setRGBCode(generateRGBColor);
 
-function setColorPaletteBall() {
+function setColorPaletteBall(array) {
   const paletteBall = document.querySelectorAll('.ball');
+
   for (let index = 0; index < paletteBall.length; index += 1) {
-    const colorBG = generateRGBColor[index];
+    const colorBG = array[index];
     paletteBall[index].style.backgroundColor = `rgb${colorBG}`;
   }
 }
+setColorPaletteBall(generateRGBColor);
 
 function guessColor() {
   const codeColor = getElementCodeColor();
@@ -48,7 +49,7 @@ function guessColor() {
   for (let index = 0; index < colorsBall.length; index += 1) {
     colorsBall[index].addEventListener('click', (event) => {
       const color = event.target.style.backgroundColor;
-      console.log(color);
+
       if (codeColor.innerHTML === color.split('rgb')[1]) {
         answer.innerHTML = 'Acertou!';
       } else {
@@ -58,4 +59,13 @@ function guessColor() {
   }
 }
 guessColor();
-setColorPaletteBall();
+
+const btnResetGameColor = document.querySelector('#reset-game');
+btnResetGameColor.addEventListener('click', () => {
+  const rgbGenerate = arrayColorRGB();
+  const answer = document.querySelector('#answer');
+  answer.innerHTML = 'Escolha uma cor';
+  setRGBCode(rgbGenerate);
+  setColorPaletteBall(rgbGenerate);
+  guessColor();
+});
