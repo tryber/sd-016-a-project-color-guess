@@ -2,6 +2,8 @@ const rgbColor = document.querySelector('#rgb-color');
 const ballsContainer = document.querySelector('.balls-container');
 const answer = document.querySelector('#answer');
 const resetGame = document.querySelector('#reset-game');
+const score = document.querySelector('#score');
+let counter = 0;
 
 function addsBalls() {
   for (let i = 0; i < 6; i += 1) {
@@ -35,11 +37,27 @@ function choosesRgb() {
 
 choosesRgb();
 
+function savesScore(number) {
+  localStorage.removeItem('counter');
+  localStorage.setItem('counter', number);
+}
+
+function reloadsScore() {
+  const number = localStorage.getItem('counter');
+  score.innerText = `Placar: ${number}`;
+}
+
 function checksAnswer(element) {
   if (element.style.backgroundColor === rgbColor.innerText) {
     answer.innerText = 'Acertou!';
+    counter += 3;
+    score.innerText = `Placar: ${counter}`;
+    savesScore(counter);
   } else {
     answer.innerText = 'Errou! Tente novamente.';
+    counter -= 1;
+    score.innerText = `Placar: ${counter}`;
+    savesScore(counter);
   }
 }
 
@@ -61,6 +79,7 @@ function reset() {
   addsBalls();
   addsBallsColor();
   choosesRgb();
+  reloadsScore();
   answer.innerText = 'Escolha uma cor';
 }
 
