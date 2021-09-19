@@ -1,5 +1,6 @@
 const getIdRgb = document.querySelector('#rgb-color');
-const getButtonReset = document.getElementsByTagName('button')[0];
+const getButtonReset = document.getElementsByTagName('button')[1];
+const getButtonClearScore = document.querySelector('#clear-score');
 const childIdRgb = document.querySelector('.showColors');
 const getClassColor = document.querySelector('.showColors');
 const creatingPTask = document.createElement('p');
@@ -9,7 +10,7 @@ function creatingRgbColor() {
   const choose = Math.floor(Math.random() * 255);
   const choose1 = Math.floor(Math.random() * 255);
   const choose2 = Math.floor(Math.random() * 255);
-  // `` backticks - criação do template
+  // `` backticks - criação do template literals
   // concatena strings e variáveis - $
   const rgbColor = `rgb(${choose}, ${choose1}, ${choose2})`;
   return rgbColor;
@@ -79,4 +80,8 @@ getButtonReset.addEventListener('click', () => {
   createColors();
   creatingTaskGame();
   creatingGame();
+});
+
+getButtonClearScore.addEventListener('click', () => {
+  getScore.innerText = `Placar = ${0}`;
 });
