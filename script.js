@@ -1,5 +1,10 @@
+// Declaração de constantes e variáveis
 const container = document.querySelector('.container');
+let generatorColors;
+let randon = 0;
+let totScore = 0;
 
+// Função que sorteia os valores aleatórios e returna formatado.
 function randomColors() {
   const colorRandon1 = Math.floor(Math.random() * 255);
   const colorRandon2 = Math.floor(Math.random() * 255);
@@ -8,6 +13,7 @@ function randomColors() {
   return colorSelected;
 }
 
+// Função que transforma as cores aleatórias em array e as retorna.
 function arrayColor() {
   const arrayColors = [];
   for (let index = 0; index < 6; index += 1) {
@@ -16,14 +22,11 @@ function arrayColor() {
   return arrayColors;
 }
 
-function generatorColor() {
-  return arrayColor();
-}
+generatorColors = arrayColor();
 
-const generatorColors = generatorColor();
-
+// Função que cria o elemento p para definição da cor que deve ser advinhada.
 function createGamecolor(color) {
-  const randon = Math.floor(Math.random() * color.length);
+  randon = Math.floor(Math.random() * color.length);
   const createColor = document.createElement('p');
   createColor.id = 'rgb-color';
   createColor.innerHTML = color[randon];
@@ -31,6 +34,7 @@ function createGamecolor(color) {
   return color;
 }
 
+// Função que cria as 6 cores para advinhação.
 function createOptionColors() {
   for (let index = 0; index < 6; index += 1) {
     // let sort = Math.floor(Math.random() * 6)
@@ -40,6 +44,7 @@ function createOptionColors() {
   }
 }
 
+// Função que colori as div de advinhação.
 function inputColor(color) {
   const divColors = document.querySelectorAll('.ball');
   for (let index = 0; index < 6; index += 1) {
@@ -48,6 +53,7 @@ function inputColor(color) {
   }
 }
 
+// Função que cria o paragrafo de informação do jojo.
 function createAnswer() {
   const creatText = document.createElement('p');
   creatText.id = 'answer';
@@ -55,44 +61,65 @@ function createAnswer() {
   container.appendChild(creatText);
 }
 
+// Função que cria o paragrafo de informação de pontuação.
+function createScore() {
+  const creatScore = document.createElement('p');
+  creatScore.id = 'score';
+  creatScore.innerHTML = totScore;
+  container.appendChild(creatScore);
+}
+
+// Função que faz a contagem de pontuação.
+function totalScore() {
+  const selectScore = document.querySelector('#score');
+  totScore += 3;
+  selectScore.innerHTML = totScore;
+  return selectScore.innerHTML;
+}
+
+// Função que valida se usuário acertou ou erro a escolha da cor.
 function validationColor() {
   const selectAnswer = document.querySelector('#answer');
   const selectColor = document.querySelector('#rgb-color').innerHTML;
   const selectBalls = document.querySelectorAll('.ball');
   for (let index = 0; index < selectBalls.length; index += 1) {
     selectBalls[index].addEventListener('click', (event) => {
-      console.log(event.target.style.backgroundColor);
       if (event.target.style.backgroundColor === `rgb${selectColor}`) {
         selectAnswer.innerHTML = 'Acertou!';
-      } else {
-        selectAnswer.innerHTML = 'Errou! Tente novamente!';
+        return totalScore();
       }
+      selectAnswer.innerHTML = 'Errou! Tente novamente!';
     });
   }
 }
+
+// Função que cria o botão de Inicio e Reset Game.
 function createButton() {
   const createButtonReset = document.createElement('button');
-  createButtonReset.innerHTML = 'Resetar Jogo';
+  createButtonReset.innerHTML = 'Iniciar / Resetar Jogo';
   createButtonReset.id = 'reset-game';
   createButtonReset.type = 'submit';
   container.appendChild(createButtonReset);
 }
 
+// Carrega todas as funções para funcionamento do Jogo.
 createGamecolor(generatorColors);
 createOptionColors();
 inputColor(generatorColors);
 createAnswer();
 validationColor();
+createScore();
 createButton();
 
+// Função que reseta o Jogo.
 const selectButton = document.querySelector('#reset-game');
 selectButton.addEventListener('click', () => {
   const selectColor = document.querySelector('#rgb-color');
   const selectAnswer = document.querySelector('#answer');
-  const gerador = generatorColor();
-  const randon = Math.floor(Math.random() * gerador.length);
-  inputColor(gerador);
-  selectColor.innerHTML = gerador[randon];
+  randon = Math.floor(Math.random() * generatorColors.length);
+  generatorColors = arrayColor();
+  inputColor(generatorColors);
+  selectColor.innerHTML = generatorColors[randon];
   selectAnswer.innerHTML = 'Escolha uma cor';
   validationColor();
 });
