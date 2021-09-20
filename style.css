@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  font-family: Raleway, sans-serif;
+}
+
+body {
+  position: relative;
+  width: max-content;
+  margin: auto;
+  font-size: x-large;
+  background-color: rgb(27, 27, 27);
+}
+
+main {
+  margin-top: 30px;
+  background-color: rgb(238, 238, 238);
+  padding: 20px 50px;
+  border-radius: 20px;
+}
+
+#title {
+  width: max-content;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+#color-to-guess {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-image: url('/question-mark.png');
+  background-size: cover;
+  opacity: 10%;
+  transition-duration: 0.3s;
+}
+
+#rgb-color {
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#colors {
+  width: max-content;
+  margin: 10px auto;
+  margin-bottom: 5px;
+}
+
+.ball {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.ball:last-child {
+  margin-right: 0;
+}
+
+#answer {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+#button-section {
+  text-align: center;
+}
+
+#reset-game {
+  margin-top: 20px;
+  padding: 5px 7px;
+  border-radius: 10px;
+  border: 2px solid rgb(194, 52, 52);
+  color: black;
+  background-color: rgb(230, 230, 230);
+  transition-duration: 0.3s;
+}
+
+#reset-game:hover {
+  background-color: rgb(194, 52, 52);
+  color: white;
+}
+
+#reset-game:active {
+  background-color: rgb(180, 50, 50);
+  color: white;
+}
+
+#score-side {
+  position: absolute;
+  right: 0;
+  top: 70px;
+  font-size: 15px;
+  padding: 2px 10px;
+  padding-right: 25px;
+  color: white;
+  background-color: rgb(27, 27, 27);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
