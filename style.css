@@ -10,3 +10,12 @@ body {
   text-align: center;
   margin: 20px auto;
 }
+
+#rgb-color {
+  text-align: center;
+  border: 1px solid white;
+  padding: 10px;
+  max-width: 70%;
+  margin: auto;
+  border-radius: 10px;
+}
