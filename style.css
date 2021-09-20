@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: Montserrat, sans-serif;
+}
+
+#title {
+  text-align: center;
+  margin: 20px auto;
+}
