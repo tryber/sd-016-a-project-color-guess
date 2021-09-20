@@ -21,6 +21,7 @@ function createColorsOptions() {
     mainContainer.appendChild(colorOptions);
   }
 }
+createColorsOptions();
 
 function generateRandomTextRGB() {
   let randomTextRGB = document.getElementById('rgb-color');
@@ -30,6 +31,7 @@ function generateRandomTextRGB() {
   let randomColor =  colorOptions[randomIndex].style.backgroundColor;
   randomTextRGB.innerText = randomColor;
 }
+generateRandomTextRGB();
 
 function createAnswerText() {
   let answerText = document.createElement('p');
@@ -38,11 +40,11 @@ function createAnswerText() {
 
   mainContainer.appendChild(answerText);
 }
+createAnswerText();
 
-
+let answerText = document.getElementById('answer');
 function handleColorButtons() {
   let randomTextRGB = document.getElementById('rgb-color').innerText;
-  let answerText = document.getElementById('answer');
   let colorButtons = document.querySelectorAll('.ball');
 
   for (let i = 0; i < colorButtons.length; i += 1) {
@@ -55,12 +57,38 @@ function handleColorButtons() {
     })
   } 
 }
+handleColorButtons();
 
+function createRestartButton() {
+  let restartButton = document.createElement('button');
+  restartButton.id = 'reset-game';
+  restartButton.innerText = 'Resetar';
 
-
-window.onload = () => {
-  createColorsOptions();
-  generateRandomTextRGB();
-  createAnswerText();
-  handleColorButtons();
+  mainContainer.appendChild(restartButton);
 }
+createRestartButton();
+
+function restartGame() {
+  generateRandomTextRGB();
+  answerText.innerText = 'Escolha uma cor';
+  
+  let colorOptions = document.querySelectorAll('.ball');
+
+  for (let i = 0; i < colorOptions.length; i += 1) {
+    colorOptions[i].style.backgroundColor = `rgb(${(Math.floor(Math.random() * 256))}, ${(Math.floor(Math.random() * 256))}, ${(Math.floor(Math.random() * 256))})`;
+    // https://stackoverflow.com/questions/5882768/how-to-append-a-childnode-to-a-specific-position
+    // Referencia do "insertBefore" para colocar as novas opcoes de cores exatamente depois do primeiro filho (p) do mainContainer
+    mainContainer.insertBefore(colorOptions[i], mainContainer.children[1]);
+  }
+}
+
+let restartButton = document.getElementById('reset-game');
+restartButton.addEventListener('click', restartGame);
+
+// window.onload = () => {
+//   // createColorsOptions();
+//   // generateRandomTextRGB();
+//   // createAnswerText();
+//   // handleColorButtons();
+  
+// }
