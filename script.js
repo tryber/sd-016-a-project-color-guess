@@ -1,21 +1,20 @@
 function createRandomTextRGB() {
-  let mainContainer = document.createElement('main');
+  const mainContainer = document.createElement('main');
   mainContainer.id = 'main-container';
   mainContainer.style.textAlign = 'center';
 
-  let randomTextRGB = document.createElement('p')
+  const randomTextRGB = document.createElement('p');
   randomTextRGB.id = 'rgb-color';
 
   document.body.appendChild(mainContainer);
   mainContainer.appendChild(randomTextRGB);
 }
-
 createRandomTextRGB();
 
-let mainContainer = document.getElementById('main-container');
+const mainContainer = document.getElementById('main-container');
 function createColorsOptions() {
   for (let i = 0; i <= 5; i += 1) {
-    let colorOptions = document.createElement('div');
+    const colorOptions = document.createElement('div');
     colorOptions.className = 'ball';
     colorOptions.style.backgroundColor = `rgb(${(Math.floor(Math.random() * 256))}, ${(Math.floor(Math.random() * 256))}, ${(Math.floor(Math.random() * 256))})`;
     mainContainer.appendChild(colorOptions);
@@ -23,18 +22,27 @@ function createColorsOptions() {
 }
 createColorsOptions();
 
-function generateRandomTextRGB() {
-  let randomTextRGB = document.getElementById('rgb-color');
-  let colorOptions = document.querySelectorAll('.ball');
-  let randomIndex = Math.floor(Math.random() * 6);
+function createScore() {
+  const score = document.createElement('p');
+  score.id = 'score';
+  score.innerText = 0;
 
-  let randomColor =  colorOptions[randomIndex].style.backgroundColor;
+  mainContainer.appendChild(score);
+}
+createScore();
+
+function generateRandomTextRGB() {
+  const randomTextRGB = document.getElementById('rgb-color');
+  const colorOptions = document.querySelectorAll('.ball');
+  const randomIndex = Math.floor(Math.random() * 6);
+
+  const randomColor = colorOptions[randomIndex].style.backgroundColor;
   randomTextRGB.innerText = randomColor;
 }
 generateRandomTextRGB();
 
 function createAnswerText() {
-  let answerText = document.createElement('p');
+  const answerText = document.createElement('p');
   answerText.id = 'answer';
   answerText.innerText = 'Escolha uma cor';
 
@@ -42,25 +50,8 @@ function createAnswerText() {
 }
 createAnswerText();
 
-let answerText = document.getElementById('answer');
-function handleColorButtons() {
-  let randomTextRGB = document.getElementById('rgb-color').innerText;
-  let colorButtons = document.querySelectorAll('.ball');
-
-  for (let i = 0; i < colorButtons.length; i += 1) {
-    colorButtons[i].addEventListener('click', () => {
-      if (colorButtons[i].style.backgroundColor === randomTextRGB) {
-        answerText.innerText = 'Acertou!';
-      } else {
-        answerText.innerText = 'Errou! Tente novamente!';
-      }
-    })
-  } 
-}
-handleColorButtons();
-
 function createRestartButton() {
-  let restartButton = document.createElement('button');
+  const restartButton = document.createElement('button');
   restartButton.id = 'reset-game';
   restartButton.innerText = 'Resetar';
 
@@ -68,11 +59,9 @@ function createRestartButton() {
 }
 createRestartButton();
 
+const answerText = document.getElementById('answer');
 function restartGame() {
-  generateRandomTextRGB();
-  answerText.innerText = 'Escolha uma cor';
-  
-  let colorOptions = document.querySelectorAll('.ball');
+  const colorOptions = document.querySelectorAll('.ball');
 
   for (let i = 0; i < colorOptions.length; i += 1) {
     colorOptions[i].style.backgroundColor = `rgb(${(Math.floor(Math.random() * 256))}, ${(Math.floor(Math.random() * 256))}, ${(Math.floor(Math.random() * 256))})`;
@@ -80,15 +69,35 @@ function restartGame() {
     // Referencia do "insertBefore" para colocar as novas opcoes de cores exatamente depois do primeiro filho (p) do mainContainer
     mainContainer.insertBefore(colorOptions[i], mainContainer.children[1]);
   }
+
+  generateRandomTextRGB();
+  answerText.innerText = 'Escolha uma cor';
 }
 
-let restartButton = document.getElementById('reset-game');
-restartButton.addEventListener('click', restartGame);
+function handleColorButtons() {
+  const colorButtons = document.querySelectorAll('.ball');
+  const score = document.getElementById('score');
 
-// window.onload = () => {
-//   // createColorsOptions();
-//   // generateRandomTextRGB();
-//   // createAnswerText();
-//   // handleColorButtons();
-  
-// }
+  for (let i = 0; i < colorButtons.length; i += 1) {
+    colorButtons[i].addEventListener('click', () => {
+      const randomTextRGB = document.getElementById('rgb-color').innerText;
+      if (colorButtons[i].style.backgroundColor === randomTextRGB) {
+        answerText.innerText = 'Acertou!';
+        // Arrumando erro do lint "radix"
+        // https://eslint.org/docs/rules/radix
+        // https://stackoverflow.com/questions/7818903/jslint-says-missing-radix-parameter
+        let scoreInt = parseInt((score.innerText), 10);
+        scoreInt += 3;
+        score.innerText = scoreInt;
+      } else {
+        console.log(colorButtons[i].style.backgroundColor);
+        console.log(randomTextRGB);
+        answerText.innerText = 'Errou! Tente novamente!';
+      }
+    });
+  }
+}
+handleColorButtons();
+
+const restartButton = document.getElementById('reset-game');
+restartButton.addEventListener('click', restartGame);
