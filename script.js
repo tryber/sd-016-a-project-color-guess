@@ -57,3 +57,21 @@ const ballSelectedClass = () => {
   }
 };
 ballSelectedClass();
+
+const createButtonReset = () => {
+  const sectionButton = document.querySelector('#button');
+  const buttonReset = document.createElement('button');
+  buttonReset.id = 'reset-game';
+  buttonReset.innerText = 'Reiniciar Jogo';
+  sectionButton.appendChild(buttonReset);
+};
+createButtonReset();
+
+const getButton = document.querySelector('#reset-game');
+const resetGame = () => {
+  backgroundColorBall();
+
+  const paragraphAnswer = document.querySelector('#answer');
+  paragraphAnswer.innerText = 'Escolha uma cor';
+};
+getButton.addEventListener('click', resetGame);

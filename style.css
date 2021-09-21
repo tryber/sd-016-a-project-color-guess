@@ -38,3 +38,20 @@ body {
   text-align: center;
   font-size: 1.5rem;
 }
+
+#button {
+  text-align: center;
+}
+
+#reset-game {
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.8;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#reset-game:hover {
+  opacity: 1;
+}
