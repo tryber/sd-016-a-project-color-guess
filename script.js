@@ -1,3 +1,5 @@
+let countScore = 0;
+
 const standardColor = () => {
   const colorRGB = document.querySelector('#standard-color');
   const createParagraph = document.createElement('p');
@@ -41,6 +43,12 @@ const createParagraphAnswer = () => {
 };
 createParagraphAnswer();
 
+const itsRigth = () => {
+  const score = document.querySelector('#score');
+  countScore += 3;
+  score.innerText = `Pontuação: ${countScore}`;
+};
+
 const ballSelectedClass = () => {
   const balls = document.querySelectorAll('.ball');
   const colorRGB = document.querySelector('#rgb-color').innerText;
@@ -50,6 +58,7 @@ const ballSelectedClass = () => {
     balls[index].addEventListener('click', (event) => {
       if (colorRGB === event.target.style.backgroundColor) {
         paragraphAnswer.innerText = 'Acertou!';
+        itsRigth();
       } else {
         paragraphAnswer.innerText = 'Errou! Tente novamente!';
       }
@@ -69,9 +78,19 @@ createButtonReset();
 
 const getButton = document.querySelector('#reset-game');
 const resetGame = () => {
-  backgroundColorBall();
-
   const paragraphAnswer = document.querySelector('#answer');
   paragraphAnswer.innerText = 'Escolha uma cor';
+
+  backgroundColorBall();
+  ballSelectedClass();
 };
 getButton.addEventListener('click', resetGame);
+
+const createScoreGame = () => {
+  const sectionScore = document.querySelector('#score-game');
+  const score = document.createElement('p');
+  score.id = 'score';
+  score.innerText = `Pontuação: ${countScore}`;
+  sectionScore.appendChild(score);
+};
+createScoreGame();
