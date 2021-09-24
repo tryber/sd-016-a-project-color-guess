@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1613088200876-a6fa8b15052e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80');
+  /* Photo by Euralis Rivera Javier - https://unsplash.com/photos/2OS8imfZXbA */
+  background-size: cover;
+}
+
+#content-game {
+  background-color: rgba(194, 197, 204, 0.6);
+  padding-bottom: 20px;
+}
+
+#title {
+  font-family: Permanent Marker, cursive;
+  font-size: 56px;
+  transition: 500ms color;
+  margin-top: 40px;
+}
+
+#question {
+  font-size: 24px;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#rgb-color {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px;
+  text-transform: uppercase;
+}
+
+#answer {
+  margin-top: 4px;
+}
+
+.all-balls {
+  margin: 12px;
+}
+
+.ball {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 4px;
+}
+
+.correct {
+  border: 5px solid green;
+}
+
+.incorrect {
+  border: 5px solid red;
+}
+
+.score-button-reset {
+  margin: 4px auto;
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.score-box {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+#reset-game {
+  border-radius: 5px;
+  padding: 0 4px;
+}
