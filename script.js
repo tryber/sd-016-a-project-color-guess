@@ -38,9 +38,9 @@ function winGame(target) {
   removeListenerOfBalls();
 }
 
-function paintCorrectBall () {
+function paintCorrectBall() {
   balls.forEach((ball) => {
-    if (colorToGuess.innerText === ball.style.backgroundColor) {
+    if (colorToGuess.innerText.toLowerCase() === ball.style.backgroundColor) {
       ball.classList.add('correct');
     }
   });
@@ -55,7 +55,7 @@ function loseGame(target) {
 
 function testBackgroundColor(event) {
   const currentBall = event.target;
-  if (colorToGuess.innerText === currentBall.style.backgroundColor) {
+  if (colorToGuess.innerText.toLowerCase() === currentBall.style.backgroundColor) {
     winGame(currentBall);
   } else {
     loseGame(currentBall);
@@ -79,12 +79,19 @@ function takingOffClassOfBalls() {
   });
 }
 
+function changeTitleColor() {
+  const title = document.querySelector('#title');
+  title.style.color = returnRandomRGBColor();
+}
+
 function setupGame() {
   addingColorToBalls();
   takingOffClassOfBalls();
   pickingRandomColorToGuess();
   addingEventListenerToBalls();
   addingAsnwerText();
+  changeTitleColor();
+  setInterval(changeTitleColor, 2000);
 }
 
 window.onload = setupGame;

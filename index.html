@@ -2,27 +2,43 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Projeto Trybe - Adivinhe a cor!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header>
-      <h1 id="title">Adivinhe a cor!</h1>
-    </header>
-    <main>
-      <span id="rgb-color"></span>
-      <section>
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-      </section>
-      <span id="answer"></span>
-      <button id="reset-game">Iniciar/Reiniciar Jogo</button>
-      <p>Sua pontuação atual é <span id="score">0</span> pontos!</p>
-    </main>
+    <div id="content-game">
+      <header>
+        <h1 id="title">Adivinhe a cor!</h1>
+      </header>
+      <main>
+        <p id="question">Qual cor corresponde a esse código?</p>
+        <div class="game">
+          <div class="game-wrapper">
+            <span id="rgb-color"></span>
+            <span id="answer"></span>
+          </div>
+          <section class="all-balls">
+            <div class="ball-wrapper">
+              <div class="ball"></div>
+              <div class="ball"></div>
+              <div class="ball"></div>
+            </div>
+            <div class="ball-wrapper">
+              <div class="ball"></div>
+              <div class="ball"></div>
+              <div class="ball"></div>
+            </div>
+          </section>
+        </div>
+        <div class="score-button-reset">
+          <span class="score-box">Pontuação:<br/><span id="score">0</span></span>
+          <button id="reset-game">Iniciar/Reiniciar Jogo</button>
+        </div>
+      </main>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
