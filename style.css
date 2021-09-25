@@ -36,10 +36,38 @@ h3 {
   color: blueviolet;
 }
 
+body {
+  background-color: bisque;
+}
+
 #section-pallete {
   display: flex;
   justify-content: center;
-  margin-top: 10%;
+  margin-top: 05%;
+}
+
+#section-game {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#answer {
+  padding: 10px;
+  color: blueviolet;
+}
+
+#reset-game {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+  font-weight: 900;
+  color: chocolate;
+}
+
+#reset-game:hover {
+  background-color: cornsilk;
 }
 
 .ball {

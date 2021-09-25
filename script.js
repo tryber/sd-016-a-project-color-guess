@@ -21,14 +21,20 @@ function score() {
   scoreP.innerText = `${points}`;
 }
 
+function score2() {
+  const currentPoint = scoreP.innerHTML - 1;
+  scoreP.innerText = currentPoint;
+}
+
 function verifyAnswer() {
   for (let x = 0; x < colorSelected.length; x += 1) {
     colorSelected[x].addEventListener('click', () => {
       if (colorSelected[x].style.backgroundColor === colorAnswer.innerHTML) {
-        paragraph.innerHTML = 'Acertou!';
+        paragraph.innerHTML = 'Acertou! ;D +3 pontos!';
         score();
       } else {
-        paragraph.innerHTML = 'Errou! Tente novamente!';
+        paragraph.innerHTML = 'Errou :d -1 ponto. Tente novamente!';
+        score2();
       }
     });
   }
