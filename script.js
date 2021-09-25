@@ -4,15 +4,15 @@ const colorAnswer = document.querySelector('#rgb-color');
 const btnReset = document.querySelector('#reset-game');
 
 function generateColor() {
-  const color = ['rgb(168, 34, 1)', 'rgb(0, 0, 0)', 'rgb(72, 61, 139)',
-    'rgb(0, 255, 255)', 'rgb(46, 139, 87)', 'rgb(139, 69, 19)'];
   for (let i = 0; i < colorSelected.length; i += 1) {
-    const ballColor = colorSelected[i];
-    const randomColor = [Math.floor(Math.random() * color.length)];
-    colorAnswer.innerText = color[randomColor];
-    ballColor.style.backgroundColor = color[randomColor];
-    color.splice(randomColor, 1);
+    const ballColorIndex = colorSelected[i];
+    const R = Math.floor(Math.random() * 256);
+    const G = Math.floor(Math.random() * 256);
+    const B = Math.floor(Math.random() * 256);
+    ballColorIndex.style.backgroundColor = `rgb(${R}, ${G}, ${B})`;
   }
+  const randomColorSelected = Math.floor(Math.random() * 5);
+  colorAnswer.innerHTML = colorSelected[randomColorSelected].style.backgroundColor;
 }generateColor();
 
 function verifyAnswer() {
