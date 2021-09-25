@@ -1,7 +1,6 @@
-const colorGuess = document.querySelector('#rgb-color');
 const colorSelected = document.querySelectorAll('.ball');
+const paragraph = document.querySelector('#answer');
 const colorAnswer = document.querySelector('#rgb-color');
-const sectionGame = document.querySelector('#section-game');
 
 function generateColor() {
   const color = ['rgb(168, 34, 1)', 'blue', 'orange', 'black', 'purple', 'yellow'];
@@ -13,11 +12,14 @@ function generateColor() {
   }
 } generateColor();
 
-function answerColor() {
-  const rbgColorGuess = colorGuess.innerHTML;
-  for (let i = 0; i < colorSelected.length; i += 1) {
-    if (colorSelected[i].style.backgroundColor === rbgColorGuess) {
-      colorSelected[i].id = 'answer';
-    }
+function verifyAnswer() {
+  for (let x = 0; x < colorSelected.length; x += 1) {
+    colorSelected[x].addEventListener('click', () => {
+      if (colorSelected[x].style.backgroundColor === colorAnswer.innerHTML) {
+        paragraph.innerHTML = 'Acertou!';
+      } else {
+        paragraph.innerHTML = 'Errou! Tente novamente!';
+      }
+    });
   }
-} answerColor();
+} verifyAnswer();
