@@ -2,7 +2,7 @@ const colorSelected = document.querySelectorAll('.ball');
 const paragraph = document.querySelector('#answer');
 const colorAnswer = document.querySelector('#rgb-color');
 const btnReset = document.querySelector('#reset-game');
-
+const scoreP = document.querySelector('#score');
 function generateColor() {
   for (let i = 0; i < colorSelected.length; i += 1) {
     const ballColorIndex = colorSelected[i];
@@ -15,11 +15,18 @@ function generateColor() {
   colorAnswer.innerHTML = colorSelected[randomColorSelected].style.backgroundColor;
 }generateColor();
 
+let points = 0;
+function score() {
+  points += 3;
+  scoreP.innerText = `${points}`;
+}
+
 function verifyAnswer() {
   for (let x = 0; x < colorSelected.length; x += 1) {
     colorSelected[x].addEventListener('click', () => {
       if (colorSelected[x].style.backgroundColor === colorAnswer.innerHTML) {
         paragraph.innerHTML = 'Acertou!';
+        score();
       } else {
         paragraph.innerHTML = 'Errou! Tente novamente!';
       }
@@ -31,6 +38,5 @@ function restartGame() {
   btnReset.addEventListener('click', () => {
     paragraph.innerHTML = 'Escolha uma cor';
     generateColor();
-    verifyAnswer();
   });
 } restartGame();
