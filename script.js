@@ -33,7 +33,7 @@ function verifyAnswer() {
         paragraph.innerHTML = 'Acertou! ;D +3 pontos!';
         score();
       } else {
-        paragraph.innerHTML = 'Errou :d -1 ponto. Tente novamente!';
+        paragraph.innerHTML = 'Errou! Tente novamente! -1 ponto :d';
         score2();
       }
     });
