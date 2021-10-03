@@ -1,25 +1,57 @@
 const txtColor = document.querySelector('#rgb-color');
 const ballColors = document.querySelectorAll('.ball');
 const answer = document.querySelector('#answer');
-const correct = Math.floor(Math.random() * 6);
 const btnReset = document.querySelector('#reset-game');
+const score = document.querySelector('#score');
+const restart = document.querySelector('#restart');
+let countScore = 0;
+
+score.innerHTML = countScore;
 
 function random() {
   return Math.floor(Math.random() * 255) + 1;
 }
 
+function sumScore() {
+  if (answer.innerHTML === 'Acertou!') {
+    countScore += 3;
+    score.innerHTML = countScore;
+  }
+}
+
+function resetClick(func) {
+  for (let i = 0, len = ballColors.length; i < len; i += 1) {
+    ballColors[i].removeEventListener('click', func);
+  }
+}
+
+function hitAnswer(event) {
+  if (event.target.style.backgroundColor === `rgb${txtColor.innerText}`) {
+    answer.innerHTML = 'Acertou!';
+    restart.innerHTML = 'Aperte o botao para reiniciar';
+    sumScore();
+    resetClick(hitAnswer);
+  } else {
+    answer.innerHTML = 'Errou! Tente novamente!';
+    restart.innerHTML = 'Aperte o botao para reiniciar';
+    resetClick(hitAnswer);
+  }
+}
+
+function resetColors() {
+  restart.innerHTML = '';
+  for (let i = 0, len = ballColors.length; i < len; i += 1) {
+    ballColors[i].style.backgroundColor = '';
+  }
+}
+
 function logicGame() {
+  const correct = Math.floor(Math.random() * ballColors.length);
   answer.innerHTML = 'Escolha uma cor';
   txtColor.innerHTML = `(${random()}, ${random()}, ${random()})`;
   ballColors[correct].style.backgroundColor = `rgb${txtColor.innerText}`;
   for (let i = 0, len = ballColors.length; i < len; i += 1) {
-    ballColors[i].addEventListener('click', (event) => {
-      if (event.target.style.backgroundColor === `rgb${txtColor.innerText}`) {
-        answer.innerHTML = 'Acertou!';
-      } else {
-        answer.innerHTML = 'Errou! Tente novamente!';
-      }
-    });
+    ballColors[i].addEventListener('click', hitAnswer);
   }
 }
 
@@ -35,8 +67,9 @@ function paintBalls() {
 }
 
 function game() {
-  paintBalls();
+  resetColors();
   logicGame();
+  paintBalls();
 }
 
 game();
