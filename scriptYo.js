@@ -19,13 +19,14 @@ function changeRbg() {
 }
 changeRbg();
 
-const instructionText = document.getElementById('answer')
+const instructionText = document.getElementById('answer');
 
 const clickBalls = () => {
   balls.forEach((ball) => {
     ball.addEventListener('click', () => {
       if (ball.style.backgroundColor === rgbInitial.innerText) {
         instructionText.innerHTML = 'Acertou!';
+        sum()
       } else {
         instructionText.innerHTML = 'Errou! Tente novamente!';
       }
@@ -36,9 +37,22 @@ clickBalls();
 
 const btnReset = document.querySelector('#reset-game');
 
-btnReset.addEventListener('click', () => {
+btnReset.addEventListener('click', (event) => {
   instructionText.innerText = 'Escolha uma cor';
   changeColors();
   changeRbg();
-  clickBalls();
+  // clickBalls();
 })
+
+const score = document.querySelector('#score');
+const restart = document.querySelector('#restart');
+let counter = 0;
+
+score.innerHTML = counter;
+
+const sum = () => {
+  if (instructionText.innerHTML === 'Acertou!') {
+    counter += 3;
+    score.innerHTML = counter;
+  }
+}
