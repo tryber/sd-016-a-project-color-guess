@@ -9,7 +9,10 @@ function rgbGenerator() {
   return `rgb(${arrayRgb[0]}, ${arrayRgb[1]}, ${arrayRgb[2]})`
 }
 
-balls.forEach((ball) => ball.style.backgroundColor = rgbGenerator());
+const changeColors = () => {
+  balls.forEach((ball) => ball.style.backgroundColor = rgbGenerator());
+}
+changeColors();
 
 function changeRbg() {
   rgbInitial.innerText = `${balls[Math.floor(Math.random() * 6)].style.backgroundColor}`
@@ -18,22 +21,24 @@ changeRbg();
 
 const instructionText = document.getElementById('answer')
 
-balls.forEach((ball) => {
-  ball.addEventListener('click', () => {
-    if (ball.style.backgroundColor === rgbInitial.innerText) {
-      instructionText.innerHTML = 'Acertou!';
-    } else {
-      instructionText.innerHTML = 'Errou! Tente novamente!';
-    }
+const clickBalls = () => {
+  balls.forEach((ball) => {
+    ball.addEventListener('click', () => {
+      if (ball.style.backgroundColor === rgbInitial.innerText) {
+        instructionText.innerHTML = 'Acertou!';
+      } else {
+        instructionText.innerHTML = 'Errou! Tente novamente!';
+      }
+    })
   })
+}
+clickBalls();
+
+const btnReset = document.querySelector('#reset-game');
+
+btnReset.addEventListener('click', () => {
+  instructionText.innerText = 'Escolha uma cor';
+  changeColors();
+  changeRbg();
+  clickBalls();
 })
-
-
-// const btnReset = document.querySelector('#reset');
-// btnReset.addEventListener('click',() => {
-
-// ;
-// btnReset.addEventListener('click', () => {
-//   if ()
-//   instructionText.innerHTML = 
-// })
