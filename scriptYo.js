@@ -1,5 +1,5 @@
 const balls = document.querySelectorAll('.ball');
-
+const rgbInitial = document.querySelector('#rgb-color');
 
 function rgbGenerator () {
   const arrayRgb = [];
@@ -11,3 +11,18 @@ function rgbGenerator () {
 
 balls.forEach((ball) => ball.style.backgroundColor = rgbGenerator());
 
+function changeRbg () {
+  rgbInitial.innerText = `${balls[Math.floor(Math.random()*7)].style.backgroundColor}`
+}
+changeRbg();
+
+// const btnReset = document.querySelector('#reset');
+// btnReset.addEventListener('click',() => {
+
+// })
+
+// const instructionText = document.querySelector('#instruction-text');
+// btnReset.addEventListener('click', () => {
+//   if ()
+//   instructionText.innerHTML = 
+// })
