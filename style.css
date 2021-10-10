@@ -6,7 +6,22 @@
 }
 
 #rgb-color {
-  margin-bottom: 50px;
+  margin-bottom: 100px;
+  font-family: 'IBM Plex mono';
+  font-size: 25px;
+  font-weight: 700;
+}
+
+#reset-game {
+  margin-top: 100px;
+}
+
+#answer {
+  margin-bottom: 100px;
+}
+
+#score {
+  margin-top: 100px;
 }
 
 main {
