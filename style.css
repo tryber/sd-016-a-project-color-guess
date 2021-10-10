@@ -1,0 +1,49 @@
+html {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+body {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#ball-zone {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100px;
+}
+
+.ball {
+  background-color: white;
+  width: 150px;
+  height: 150px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+#rgb-color {
+  margin-bottom: 100px;
+  font-family: monospace;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+#reset-game {
+  margin-top: 100px;
+}
+
+#answer {
+  margin-bottom: 100px;
+}
+
+#score {
+  margin-top: 100px;
+}
+
+main {
+  margin-top: 75px;
+}
