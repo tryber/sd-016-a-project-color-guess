@@ -1,13 +1,33 @@
+html {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+body {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#ball-zone {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100px;
+}
+
 .ball {
-  border: 1px solid black;
-  padding: 45px;
+  background-color: white;
+  width: 150px;
+  height: 150px;
+  border: 2px solid black;
   border-radius: 50%;
-  margin-right: 25px;
+  margin: 0;
+  padding: 0;
 }
 
 #rgb-color {
   margin-bottom: 100px;
-  font-family: 'IBM Plex mono';
+  font-family: monospace;
   font-size: 25px;
   font-weight: 700;
 }
