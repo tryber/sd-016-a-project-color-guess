@@ -47,7 +47,6 @@ btnReset.addEventListener('click', (event) => {
 const score = document.querySelector('#score');
 const restart = document.querySelector('#restart');
 let counter = 0;
-
 score.innerHTML = counter;
 
 const sum = () => {
